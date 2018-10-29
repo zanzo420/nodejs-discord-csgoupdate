@@ -1,0 +1,5 @@
+/.gitattributes export-ignore
+/README.md export-ignore
+/_config.yml
+/csgo-icon.png
+/preview.png
