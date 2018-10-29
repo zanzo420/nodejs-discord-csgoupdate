@@ -2,7 +2,7 @@
 *.png
 
 # GitHub theme config
-config.yml
+_config.yml
 
 # Readme
 README.MD
