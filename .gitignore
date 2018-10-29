@@ -1,0 +1,8 @@
+# Image files
+*.png
+
+# GitHub theme config
+config.yml
+
+# Readme
+README.MD
