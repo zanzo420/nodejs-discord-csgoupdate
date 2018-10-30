@@ -76,7 +76,7 @@ function getUpdate() {
         });
 
         // Limiting the update to 10 lines
-        var updateNotes = format.split('\n', 10);
+        let updateNotes = format.split('\n', 10);
 
         if (updateDate.includes(`${date}`)) {
             if (lastUpdate !== date) {
