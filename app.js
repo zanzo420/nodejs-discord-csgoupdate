@@ -80,23 +80,21 @@ function getUpdate() {
         // Limiting the update to 10 lines
         let updateNotes = format.split('\n', 10);
 
-        if (updateDate.includes(`${date}`)) {
-            if (lastUpdate !== date) {
-                bot.channels.get(cfg.channelid).send("@everyone A new CS:GO Update has been released!", {
-                    embed: {
-                      "title": `${updateTitle}`,
-                      "description": `${updateNotes.join('\n')}...\n\n[Continue reading on the CS:GO Blog](${updateURL})`,
-                      "url": `${updateURL}`,
-                      "color": 5478908,
-                      "thumbnail": {
-                        "url": "https://raw.githubusercontent.com/Triniayo/nodejs-discord-csgoupdate/master/csgo-icon.png"
-                      }
+        if (lastUpdate !== date) {
+            bot.channels.get(cfg.channelid).send("@everyone A new CS:GO Update has been released!", {
+                embed: {
+                    "title": `${updateTitle}`,
+                    "description": `${updateNotes.join('\n')}...\n\n[Continue reading on the CS:GO Blog](${updateURL})`,
+                    "url": `${updateURL}`,
+                    "color": 5478908,
+                    "thumbnail": {
+                    "url": "https://raw.githubusercontent.com/Triniayo/nodejs-discord-csgoupdate/master/csgo-icon.png"
                     }
-                });
+                }
+            });
 
-                // Storing date of the latest update in the check-update.txt
-                fs.writeFileSync('check-update.txt', `${date}`)
-            }
+            // Storing date of the latest update in the check-update.txt
+            fs.writeFileSync('check-update.txt', `${date}`)
         } else {
             // Do nothing if update has been posted already.
         }
