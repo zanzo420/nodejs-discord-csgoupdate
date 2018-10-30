@@ -22,6 +22,11 @@ v1.2.0
 - Removed MySQL requirement
 - Added textfile to log date of last update
 - Set message limiting to a maximum of 10 lines (looks way better now - see below)
+
+v1.3.0
+- Changed to another RSS module
+- Recoded whole RSS feed stuff
+- Spams have been fixed by changing RSS package
 ```
 
 # Preview
