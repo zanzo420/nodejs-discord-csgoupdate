@@ -37,7 +37,7 @@ function getLastUpdate() {
     lastUpdate = dateFromFile.toString();
 }
 
-// Getting last date from check-update.txt file every second
+// Getting last date from check-update.txt file every 5 seconds
 setInterval(getLastUpdate, 5000);
 
 // Create Discord Bot Instance
@@ -48,8 +48,8 @@ bot.on('ready', () => {
     log.info('discord', `Logged in as ${bot.user.tag} (User ID: ${bot.user.id}) on ${bot.guilds.size} server(s)`);
     bot.user.setActivity('Fetching Updates');
 
-    // Checking every 15 seconds, if there's a new update, and if it's been posted already
-    setInterval(getUpdate, 15000);
+    // Checking every 10 seconds if there's a new update, and if it's been posted already
+    setInterval(getUpdate, 10000);
 });
 
 function getUpdate() {
@@ -64,10 +64,12 @@ function getUpdate() {
 
         // Setting items into variables
         feed.items.forEach(item => {
-            updateTitle = item.title;
-            updateURL = item.link;
-            updateContent = item.contentHtml;
-            updateDate = item.isoDate;
+            if (item.isoDate.includes(`${date}`)) {
+                updateTitle = item.title;
+                updateURL = item.link;
+                updateContent = item.contentHtml;
+                updateDate = item.isoDate;
+            }
         });
 
         // Converting from HTML to readable text
