@@ -1,6 +1,6 @@
 {
     "name": "csgoupdate-discord-bot",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "Simple Node.js Discord Bot which sends CS:GO Updates into a specific channel.",
     "main": "app.js",
     "author": "Triniayo",
@@ -9,7 +9,7 @@
         "discord.js": "^11.4.2",
         "html-to-text": "^4.0.0",
         "npmlog": "^4.1.2",
-        "rss-feed-emitter": "^2.0.0"
+        "rss-parser": "^3.5.2"
     },
     "repository": {
         "type": "git",
