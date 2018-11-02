@@ -31,7 +31,7 @@ v1.3.0
 
 # Preview
 
-![Preview Image](https://raw.githubusercontent.com/Triniayo/nodejs-discord-csgoupdate/master/preview.png)
+![Preview Image](https://raw.githubusercontent.com/Triniayo/nodejs-discord-csgoupdate/master/preview.PNG)
 
 # Requirements
 
