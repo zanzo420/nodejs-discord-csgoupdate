@@ -55,7 +55,11 @@ bot.on('ready', () => {
 function getUpdate() {
     // Get current date and edit format
     let getDate = new Date();
-    let date = (getDate.getFullYear() +'-'+ (getDate.getMonth() +1) +'-'+ getDate.getDate());
+    let date = [
+        getDate.getFullYear(),
+        ('0' + (getDate.getMonth() + 1)).slice(-2),
+        ('0' + getDate.getDate()).slice(-2)
+    ].join('-');
 
     // Fetching updates from CS:GO Blog
     (async () => {
@@ -80,21 +84,23 @@ function getUpdate() {
         // Limiting the update to 10 lines
         let updateNotes = format.split('\n', 10);
 
-        if (lastUpdate !== date) {
-            bot.channels.get(cfg.channelid).send("@everyone A new CS:GO Update has been released!", {
-                embed: {
-                    "title": `${updateTitle}`,
-                    "description": `${updateNotes.join('\n')}...\n\n[Continue reading on the CS:GO Blog](${updateURL})`,
-                    "url": `${updateURL}`,
-                    "color": 5478908,
-                    "thumbnail": {
-                    "url": "https://raw.githubusercontent.com/Triniayo/nodejs-discord-csgoupdate/master/csgo-icon.png"
+        if (updateDate.includes(`${date}`)) {
+            if (lastUpdate !== date) {
+                bot.channels.get(cfg.channelid).send("@everyone A new CS:GO Update has been released!", {
+                    embed: {
+                      "title": `${updateTitle}`,
+                      "description": `${updateNotes.join('\n')}...\n\n[Continue reading on the CS:GO Blog](${updateURL})`,
+                      "url": `${updateURL}`,
+                      "color": 5478908,
+                      "thumbnail": {
+                        "url": "https://raw.githubusercontent.com/Triniayo/nodejs-discord-csgoupdate/master/csgo-icon.png"
+                      }
                     }
-                }
-            });
+                });
 
-            // Storing date of the latest update in the check-update.txt
-            fs.writeFileSync('check-update.txt', `${date}`)
+                // Storing date of the latest update in the check-update.txt
+                fs.writeFileSync('check-update.txt', `${date}`)
+            }
         } else {
             // Do nothing if update has been posted already.
         }
