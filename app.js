@@ -1,7 +1,7 @@
 // Requirements
 const { Client } = require('discord.js');
 const fs = require('fs');
-let Parser = require('rss-parser');
+const Parser = require('rss-parser');
 const htmlToText = require('html-to-text');
 const log = require('npmlog');
 
